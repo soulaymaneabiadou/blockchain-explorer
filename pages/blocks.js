@@ -6,7 +6,7 @@ const Blocks = ({ chain }) => {
     <Layout>
       <h1 className='text-3xl capitalize font-medium'>Blocks explorer</h1>
 
-      <div className='mt-4 grid gap-4 lg:grid-cols-3 w-full'>
+      <div className='flex flex-col relative my-10 blocks'>
         {chain.map((block) => (
           <Block key={block.hash} block={block} />
         ))}

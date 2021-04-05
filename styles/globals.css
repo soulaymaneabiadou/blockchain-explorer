@@ -5,3 +5,42 @@
 * {
   font-family: 'Poppins', sans-serif;
 }
+
+.blocks::after {
+  background-color: #121212;
+  content: '';
+  position: absolute;
+  left: calc(50% - 2px);
+  width: 4px;
+  height: 100%;
+}
+
+.block-item:nth-child(odd) {
+  align-self: flex-end;
+  justify-content: flex-start;
+  padding-left: 30px;
+  padding-right: 0;
+}
+
+.block-conntent::after {
+  content: ' ';
+  background-color: #fff;
+  box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  right: -7.5px;
+  top: calc(50% - 7.5px);
+  transform: rotate(45deg);
+  width: 15px;
+  height: 15px;
+}
+
+.block-item:nth-child(odd) .block-content {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.block-item:nth-child(odd) .block-content::after {
+  right: auto;
+  left: -7.5px;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2);
+}
