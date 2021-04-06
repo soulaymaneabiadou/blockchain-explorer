@@ -14,4 +14,10 @@ const Home = () => {
   );
 };
 
+export const getServerSideProps = async (context) => {
+  const { res } = context;
+  res.writeHead(301, { location: '/blocks' });
+  res.end();
+};
+
 export default Home;

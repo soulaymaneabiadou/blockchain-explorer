@@ -56,10 +56,9 @@ input[type='number'] {
   padding-right: 0;
 }
 
-.block-content::after {
+.block-contennt::after {
   content: ' ';
   background-color: #fff;
-  box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.02);
   position: absolute;
   right: -7.5px;
   top: calc(50% - 7.5px);

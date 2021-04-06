@@ -44,10 +44,10 @@ const ConductTransaction = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div className='mx-auto max-w-2xl'>
+      <div className='mx-auto max-w-xl pl-3'>
         <h1 className='text-2xl capitalize font-medium'>Conduct Transaction</h1>
 
-        <form className='mt-4 ' onSubmit={conductTransaction}>
+        <form className='mt-4' onSubmit={conductTransaction}>
           <div className='relative inline-block w-full'>
             <div className='w-full'>
               <label
@@ -63,7 +63,7 @@ const ConductTransaction = () => {
                 <option value=''>Known Addresses</option>
                 {addresses?.map((address) => (
                   <option key={address} value={address}>
-                    {address?.substr(0, 75)}...
+                    {address?.substr(0, 35)}...
                   </option>
                 ))}
               </select>
@@ -90,7 +90,7 @@ const ConductTransaction = () => {
 
           <button
             type='submit'
-            className='mt-5 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-900 hover:bg-gray-800'>
+            className='mt-5 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-900 hover:bg-black'>
             Transuct
           </button>
         </form>

@@ -28,7 +28,7 @@ const TransactionPool = () => {
         {pool && Object.values(pool).length > 0 && (
           <button
             onClick={mineAll}
-            className='whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-900 hover:bg-indigo-800'>
+            className='whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-900 hover:bg-black'>
             Mine All
           </button>
         )}
