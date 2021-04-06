@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import Layout from '../components/Layout';
 import useAddresses from '../hooks/useAddresses';
 
@@ -24,16 +25,25 @@ const ConductTransaction = () => {
 
     const res = await fetch('http://localhost:5000/api/transact', {
       method: 'POST',
-      body: transaction
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(transaction)
     });
 
     const data = await res.json();
 
-    router.push('/');
+    router.push('/transaction-pool');
   };
 
   return (
     <Layout>
+      <Head>
+        <title>Conduct Transaction | Blockchain</title>
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+
       <div className='mx-auto max-w-2xl'>
         <h1 className='text-2xl capitalize font-medium'>Conduct Transaction</h1>
 

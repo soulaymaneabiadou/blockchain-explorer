@@ -24,7 +24,7 @@ const Modal = ({ block, hidden, onClose }) => {
         </span>
 
         <div
-          className={`inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle w-96 sm:max-w-7xl sm:w-full ${
+          className={`inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle w-96 sm:max-w-3xl sm:w-full ${
             hidden
               ? 'ease-in duration-200 opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
               : 'ease-out duration-300 opacity-100 translate-y-0 sm:scale-100'
@@ -41,19 +41,19 @@ const Modal = ({ block, hidden, onClose }) => {
                   Mined At: {new Date(block?.timestamp).toString()}
                 </span>
                 <p className='text-lg mt-4 text-gray-800'>
-                  Hash: {block?.hash}
+                  Hash: {block?.hash?.substr(0, 15)}...
                 </p>
 
                 {block?.lastHash && (
                   <p className='text-base mt-2 text-gray-600'>
-                    Last Hash: {block?.lastHash}
+                    Last Hash: {block?.lastHash?.substr(0, 15)}...
                   </p>
                 )}
 
                 {block?.data?.length > 0 && (
-                  <p className='text-base mt-4 text-gray-800'>
-                    Data(Transactions) :
-                  </p>
+                  <h2 className='text-xl font-medium mt-4 text-gray-800'>
+                    Transactions :
+                  </h2>
                 )}
                 <div className=''>
                   {block?.data?.map((transaction) => (
