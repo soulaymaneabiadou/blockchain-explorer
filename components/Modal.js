@@ -1,4 +1,4 @@
-import React from 'react';
+import Transaction from './Transaction';
 
 const Modal = ({ block, hidden, onClose }) => {
   return (
@@ -24,7 +24,7 @@ const Modal = ({ block, hidden, onClose }) => {
         </span>
 
         <div
-          className={`inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle w-96 sm:max-w-3xl sm:w-full ${
+          className={`inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle w-96 sm:max-w-7xl sm:w-full ${
             hidden
               ? 'ease-in duration-200 opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
               : 'ease-out duration-300 opacity-100 translate-y-0 sm:scale-100'
@@ -32,7 +32,7 @@ const Modal = ({ block, hidden, onClose }) => {
           <div className='bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4'>
             <div className='mt-3 sm:mt-0 sm:text-left'>
               <h3
-                className='text-lg leading-6 font-medium text-gray-900'
+                className='text-2xl leading-6 font-medium text-gray-900'
                 id='modal-title'>
                 Block Detailes
               </h3>
@@ -53,9 +53,11 @@ const Modal = ({ block, hidden, onClose }) => {
                 <p className='text-base mt-4 text-gray-800'>
                   Data(Transactions) :
                 </p>
-                <pre className='bg-gray-100 p-2 mt-1 rounded-md w-full'>
-                  <code>{JSON.stringify(block?.data, null, 2)}</code>
-                </pre>
+                <div className=''>
+                  {block?.data?.map((transaction) => (
+                    <Transaction transaction={transaction} />
+                  ))}
+                </div>
 
                 <div className='mt-4 flex space-x-12'>
                   <span className='inline-block rounded-md bg-gray-200 px-2 py-1 text-sm'>
