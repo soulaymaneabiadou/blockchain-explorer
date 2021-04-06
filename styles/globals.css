@@ -6,6 +6,16 @@
   font-family: 'Poppins', sans-serif;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
 .blocks::after {
   background-color: #121212;
   content: '';
@@ -22,10 +32,10 @@
   padding-right: 0;
 }
 
-.block-conntent::after {
+.block-content::after {
   content: ' ';
   background-color: #fff;
-  box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.02);
   position: absolute;
   right: -7.5px;
   top: calc(50% - 7.5px);

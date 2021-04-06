@@ -1,8 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import useWallet from '../hooks/useWallet';
 
 const Header = () => {
+  const { wallet } = useWallet();
+  const [hideWallet, setHideWallet] = useState(true);
+  const [addressCopied, setAddressCopied] = useState(false);
   const [hideMenu, setHideMenu] = useState(true);
+
+  const copyAddress = () => {
+    navigator.clipboard.writeText(wallet?.address);
+    setAddressCopied(true);
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAddressCopied(false);
+    }, 1500);
+  }, [addressCopied]);
 
   return (
     <div className='relative bg-white'>
@@ -40,11 +55,11 @@ const Header = () => {
           </div>
 
           <nav className='hidden md:flex space-x-10'>
-            <a
-              href='#'
-              className='text-base font-medium text-gray-500 hover:text-gray-900'>
-              API Docs
-            </a>
+            <Link href='/conduct-transaction'>
+              <a className='text-base font-medium text-gray-500 hover:text-gray-900'>
+                Conduct Transactions
+              </a>
+            </Link>
             <a
               href='#'
               className='text-base font-medium text-gray-500 hover:text-gray-900'>
@@ -58,11 +73,69 @@ const Header = () => {
           </nav>
 
           <div className='hidden md:flex items-center justify-end md:flex-1 lg:w-0'>
-            <Link href='/wallet'>
-              <a className='text-base font-medium text-gray-500 hover:text-gray-900'>
-                Wallet
-              </a>
-            </Link>
+            <div className='ml-3 relative'>
+              <div>
+                <button
+                  onClick={() => setHideWallet(!hideWallet)}
+                  type='button'
+                  className='focus:outline-none text-base font-medium text-gray-500 hover:text-gray-900'
+                  id='user-menu'
+                  aria-expanded='false'
+                  aria-haspopup='true'>
+                  Wallet
+                </button>
+              </div>
+
+              <div
+                className={`origin-top-right absolute right-0 mt-2 w-80 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none ${
+                  hideWallet
+                    ? 'transition ease-in duration-75 transform opacity-0 scale-95'
+                    : 'transition ease-out duration-100 transform opacity-100 scale-100'
+                }`}
+                role='menu'
+                aria-orientation='vertical'
+                aria-labelledby='user-menu'>
+                <div
+                  href='#'
+                  className='flex justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                  role='menuitem'>
+                  Address: {wallet?.address?.substr(0, 15)}...
+                  <span
+                    className='cursor-pointer text-gray-500 hover:text-gray-900'
+                    onClick={copyAddress}>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      className='h-6 w-6'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      stroke='currentColor'>
+                      {addressCopied ? (
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2}
+                          d='M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4'
+                        />
+                      ) : (
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2}
+                          d='M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'
+                        />
+                      )}
+                    </svg>
+                  </span>
+                </div>
+
+                <a
+                  href='#'
+                  className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                  role='menuitem'>
+                  Balance: {wallet?.balance}
+                </a>
+              </div>
+            </div>
 
             <Link href='/blocks'>
               <a className='ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-900 hover:bg-gray-800'>
@@ -80,7 +153,7 @@ const Header = () => {
             : 'duration-100 opacity-0 scale-95 ease-in hidden'
         }`}>
         <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50'>
-          <div className='pt-4 pb-6 px-4'>
+          <div className='pt-4 pb-6 px-4 bg-white'>
             <div className='flex items-center justify-between'>
               <div>
                 <a href='#'>
@@ -111,7 +184,7 @@ const Header = () => {
               </div>
             </div>
 
-            <div className='mt-6'>
+            <div className='mt-6 bg-white'>
               <nav className='grid gap-y-8'>
                 <a
                   href='#'

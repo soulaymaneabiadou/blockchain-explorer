@@ -50,9 +50,11 @@ const Modal = ({ block, hidden, onClose }) => {
                   </p>
                 )}
 
-                <p className='text-base mt-4 text-gray-800'>
-                  Data(Transactions) :
-                </p>
+                {block?.data?.length > 0 && (
+                  <p className='text-base mt-4 text-gray-800'>
+                    Data(Transactions) :
+                  </p>
+                )}
                 <div className=''>
                   {block?.data?.map((transaction) => (
                     <Transaction transaction={transaction} />

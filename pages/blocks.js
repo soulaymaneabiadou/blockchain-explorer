@@ -4,9 +4,11 @@ import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import Block from '../components/Block';
 import Modal from '../components/Modal';
+import useChain from '../hooks/useBlocks';
 
-const Blocks = ({ chain }) => {
+const Blocks = (props) => {
   const router = useRouter();
+  const { chain } = useChain({ initialData: props.chain });
   const [selected, setSelected] = useState({});
 
   return (
