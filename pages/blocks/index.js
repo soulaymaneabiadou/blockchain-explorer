@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import Layout from '../components/Layout';
-import Block from '../components/Block';
-import Modal from '../components/Modal';
-import useChain from '../hooks/useBlocks';
+import Layout from '@components/Layout';
+import Block from '@components/Block';
+import Modal from '@components/Modal';
+import useChain from '@hooks/useBlocks';
 
 const Blocks = (props) => {
   const router = useRouter();

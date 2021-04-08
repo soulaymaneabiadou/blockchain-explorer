@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import useWallet from '../hooks/useWallet';
+import useWallet from '@hooks/useWallet';
 
 const Header = () => {
   const { wallet } = useWallet();
@@ -21,10 +21,10 @@ const Header = () => {
 
   return (
     <div className='relative bg-white'>
-      <div className='container mx-auto px-4 sm:px-6'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6'>
         <div className='flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10'>
           <div className='flex justify-start lg:w-0 lg:flex-1'>
-            <Link href='/blocks'>
+            <Link href='/'>
               <a className='text-lg font-medium text-gray-800 hover:text-gray-900'>
                 Blockchain
               </a>
@@ -168,7 +168,7 @@ const Header = () => {
         <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50'>
           <div className='pt-4 pb-6 px-4 bg-white'>
             <div className='flex items-center justify-between'>
-              <Link href='/blocks'>
+              <Link href='/'>
                 <a className='text-lg font-medium text-gray-800 hover:text-gray-900'>
                   Blockchain
                 </a>

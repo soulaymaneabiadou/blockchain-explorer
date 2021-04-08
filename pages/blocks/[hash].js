@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import Layout from '../../components/Layout';
+import Layout from '@components/Layout';
+import useChain from '@hooks/useBlocks';
 
 const BlockDetail = () => {
+  const { chain } = useChain();
   const router = useRouter();
   const { hash } = router.query;
-  const block = {};
+  const block = chain?.filter((block) => block.hash === hash)[0];
 
   return (
     <Layout>
@@ -30,14 +32,20 @@ const BlockDetail = () => {
 
           {block?.lastHash && (
             <p className='text-base mt-2 text-gray-600'>
-              Last Hash: {block?.lastHash}
+              Last Hash: {block?.lastHash?.substr(0, 15)}...
             </p>
           )}
 
-          <p className='text-base mt-4 text-gray-800'>Data(Transactions) :</p>
-          <pre className='bg-gray-100 p-2 mt-1 rounded-md w-full'>
-            <code>{JSON.stringify(block?.data, null, 2)}</code>
-          </pre>
+          {block?.data?.length > 0 && (
+            <h2 className='text-xl font-medium mt-4 text-gray-800'>
+              Transactions :
+            </h2>
+          )}
+          <div className=''>
+            {block?.data?.map((transaction) => (
+              <Transaction transaction={transaction} />
+            ))}
+          </div>
 
           <div className='mt-4 flex space-x-12'>
             <span className='inline-block rounded-md bg-gray-200 px-2 py-1 text-sm'>

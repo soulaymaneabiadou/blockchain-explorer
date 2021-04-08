@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import Layout from '../components/Layout';
-import useAddresses from '../hooks/useAddresses';
+import Layout from '@components/Layout';
+import useAddresses from '@hooks/useAddresses';
 
 const ConductTransaction = () => {
   const router = useRouter();
@@ -15,8 +15,7 @@ const ConductTransaction = () => {
   const handleChange = (e) => {
     setTransaction({
       ...transaction,
-      [e.target.name]:
-        e.target.type == 'number' ? +e.target.value : e.target.value
+      [e.target.name]: e.target.value
     });
   };
 
@@ -31,8 +30,6 @@ const ConductTransaction = () => {
       },
       body: JSON.stringify(transaction)
     });
-
-    const data = await res.json();
 
     router.push('/transaction-pool');
   };

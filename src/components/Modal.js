@@ -1,4 +1,4 @@
-import Transaction from './Transaction';
+import Transaction from '@components/Transaction';
 
 const Modal = ({ block, hidden, onClose }) => {
   return (

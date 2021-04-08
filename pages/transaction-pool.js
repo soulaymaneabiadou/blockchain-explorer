@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import Layout from '../components/Layout';
-import usePool from '../hooks/usePool';
-import Transaction from '../components/Transaction';
+import Layout from '@components/Layout';
+import usePool from '@hooks/usePool';
+import Transaction from '@components/Transaction';
 
 const TransactionPool = () => {
   const router = useRouter();

@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import Layout from '../components/Layout';
+import Layout from '@components/Layout';
+import Link from 'next/link';
 
 const Home = () => {
   return (
@@ -9,15 +10,36 @@ const Home = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <h1>Home</h1>
+      <section className='text-gray-600 body-font'>
+        <div className='container mx-auto flex px-5 py-24 items-center justify-center flex-col'>
+          <div className='text-center lg:w-2/3 w-full'>
+            <h1 className='title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900'>
+              Blockchain
+            </h1>
+            <p className='mb-8 leading-relaxed'>
+              Meggings kinfolk echo park stumptown DIY, kale chips beard
+              jianbing tousled. Chambray dreamcatcher trust fund, kitsch vice
+              godard disrupt ramps hexagon mustache umami snackwave tilde
+              chillwave ugh. Pour-over meditation PBR&amp;B pickled ennui celiac
+              mlkshk freegan photo booth af fingerstache pitchfork.
+            </p>
+            <div className='flex justify-center'>
+              <Link href='/blocks'>
+                <a className='inline-flex text-white bg-gray-900 border-0 py-2 px-6 focus:outline-none hover:bg-blzck rounded text-lg'>
+                  Explore the Chain
+                </a>
+              </Link>
+              <Link href='/conduct-transaction'>
+                <a className='ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg'>
+                  Conduct a Transaction
+                </a>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
-};
-
-export const getServerSideProps = async (context) => {
-  const { res } = context;
-  res.writeHead(301, { location: '/blocks' });
-  res.end();
 };
 
 export default Home;

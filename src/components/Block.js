@@ -5,7 +5,7 @@ const Block = ({ block, setSelected }) => {
 
   return (
     <div className='flex justify-end pr-8 relative my-2 w-1/2 block-item bg-white'>
-      <Link href={`/blocks?hash=${hash}`} as={`/block/${hash}`}>
+      <Link href={`/blocks?hash=${hash}`} as={`/blocks/${hash}`}>
         <div
           className='shadow-md rounded-md flex flex-col items-end p-4 relative w-96 lg:max-w-2xl block-content bg-white max-w-full text-center lg:text-left cursor-pointer'
           onClick={() => setSelected(block)}>
