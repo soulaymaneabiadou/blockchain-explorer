@@ -24,7 +24,7 @@ const Modal = ({ block, hidden, onClose }) => {
         </span>
 
         <div
-          className={`inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle w-96 sm:max-w-4xl sm:w-full ${
+          className={`inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle w-96 sm:max-w-3xl sm:w-full ${
             hidden
               ? 'ease-in duration-200 opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
               : 'ease-out duration-300 opacity-100 translate-y-0 sm:scale-100'

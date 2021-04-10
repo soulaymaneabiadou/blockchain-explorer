@@ -69,7 +69,7 @@ const Header = () => {
               </div>
 
               <div
-                className={`origin-top-left absolute left-0 mt-2 w-80 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none ${
+                className={`origin-top-right absolute right-0 mt-2 w-80 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none ${
                   hideWallet
                     ? 'transition ease-in duration-75 transform opacity-0 scale-95'
                     : 'transition ease-out duration-100 transform opacity-100 scale-100'
