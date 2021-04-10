@@ -16,7 +16,7 @@ const Transaction = ({ transaction }) => {
         {recipients.map(
           (recipient) =>
             outputMap[recipient] && (
-              <div className='bg-white w-full md:w-1/3 shadow-md rounded p-3 mt-2'>
+              <div className='bg-white w-full md:w-1/4 shadow-md rounded p-3 mt-2'>
                 <h1>
                   To: {recipient.substr(0, 18)}
                   {recipient.length > 18 && '...'}

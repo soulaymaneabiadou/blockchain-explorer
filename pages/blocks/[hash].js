@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Layout from '@components/Layout';
 import useChain from '@hooks/useBlocks';
+import Transaction from '@components/Transaction';
 
 const BlockDetail = () => {
   const { chain } = useChain();
