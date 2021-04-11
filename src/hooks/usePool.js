@@ -3,7 +3,7 @@ import fetcher from '@utils/fetcher';
 
 function usePool() {
   const { data, error } = useSWR(
-    `http://localhost:5000/api/transaction-pool-map`,
+    `http://localhost:5000/api/transactions`,
     fetcher
   );
 

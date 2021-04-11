@@ -11,7 +11,14 @@ const TransactionPool = () => {
   const mineAll = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('http://localhost:5000/api/mine-transactions');
+    const res = await fetch('http://localhost:5000/api/transactions/mine', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: ''
+    });
     router.push('/blocks');
   };
 

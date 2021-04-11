@@ -13,16 +13,19 @@ const ConductTransaction = () => {
   });
 
   const handleChange = (e) => {
+    const { value, name, type } = e.target;
+    const val = type == 'number' ? parseInt(value, 10) : value;
+
     setTransaction({
       ...transaction,
-      [e.target.name]: e.target.value
+      [name]: val
     });
   };
 
   const conductTransaction = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('http://localhost:5000/api/transact', {
+    const res = await fetch('http://localhost:5000/api/transactions', {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -70,7 +73,7 @@ const ConductTransaction = () => {
           <div className='relative inline-block w-full mt-4'>
             <div className='w-full'>
               <label
-                htmlFor='recipient'
+                htmlFor='amount'
                 className='block text-sm font-medium text-gray-700'>
                 Amount
               </label>

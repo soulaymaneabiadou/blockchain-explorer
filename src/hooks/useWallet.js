@@ -2,10 +2,7 @@ import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 
 function useWallet() {
-  const { data, error } = useSWR(
-    `http://localhost:5000/api/wallet-info`,
-    fetcher
-  );
+  const { data, error } = useSWR(`http://localhost:5000/api/wallet`, fetcher);
 
   return {
     wallet: data,
